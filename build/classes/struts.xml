@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.multipart.maxSize" value="5120000"/>
+
+    <package name="postgraduate" namespace="/" extends="json-default">
+        
+         <interceptors>   
+            <interceptor name="myLogger" class="myinterceptors.LoggerInterceptor"/>  
+            <interceptor-stack name="myStack"> 
+                <interceptor-ref name="myLogger"/>   
+                <interceptor-ref name="defaultStack"/>  
+            </interceptor-stack>  
+        </interceptors>  
+        <default-interceptor-ref name="myStack"/> 
+        <action name="getcity" class="action.ToolAction" method="cities">
+            <result name="success" type="json">
+                <param name="root">container</param>
+            </result>
+        </action>
+        <action name="colleges" class="action.ToolAction" method="getcollege">
+            <result name="success" type="json">
+                <param name="root">container</param>
+            </result>
+        </action>
+        <action name="majors" class="action.ToolAction" method="getmajor">
+            <result name="success" type="json">
+                <param name="root">container</param>
+            </result>
+        </action>
+        <action name="register" class="action.registerAction" method="reg">
+            <result name="success" type="json">
+                 <param name="root">map</param>
+            </result>
+        </action>
+        <action name="bachelor" class="action.ServiceAction" method="addBachelorInfo">
+           <result name="success" type="json">
+                 <param name="root">map</param>
+            </result>
+        </action>
+        <action name="upload" class="action.UploadAction" method="execute">
+         <result name="success" type="json">
+           <param name="root">map</param>
+         </result>
+         <result name="input" type="json">
+           <param name="root">map</param>
+         </result>
+        </action>
+        
+        <action name="login" class="action.registerAction" method="login">
+            <result name="success" type="json">
+                <param name="root">map</param>
+            </result>
+        </action>              
+       
+        <action name="getsome" class="action.showAction" method="listAll">
+          <result name="success" type="json">
+            <param name="root">map</param>
+            <param name="enableGZIP">true</param>
+            </result>
+        </action>
+        <action name="sameaim" class="action.showAction" method="listAimAtSameSchool">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="fromsame" class="action.showAction" method="listFromSameSchoolSameCollege">
+            <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="addfriends" class="action.ServiceAction" method="addFriends">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="delfriends" class="action.ServiceAction" method="deleteFriends">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="getfriends" class="action.showAction" method="getFriends">
+          <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="detail" class="action.showAction" method="getinfo">
+          <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="fellowtown" class="action.showAction" method="getfellow">
+          <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="changepass" class="action.ServiceAction" method="changePassword">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="getbackpass" class="action.registerAction" method="accountExists">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="addtoblacklist" class="action.ServiceAction" method="addBlackList">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="deletefromblacklist" class="action.ServiceAction" method="deleteFromBlacklist">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="getblacklist" class="action.showAction" method="getBlackList">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="changeaim" class="action.ServiceAction" method="changeAim">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="updateinfo" class="action.ServiceAction" method="updatePersoninfo">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="updatelocaction" class="action.ServiceAction" method="updateLocation">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="getmajordetail" class="action.ServiceAction" method="getmajordetail">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="getdirectiondetail" class="action.ServiceAction" method="getDirectionDetail">
+         <result name="success" type="json">
+          <param name="root">map</param>
+         </result>
+        </action>
+         <action name="addcomments" class="action.ServiceAction" method="addComments">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="confirmfinish" class="action.ServiceAction" method="isconfirmfinish">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+       
+        <action name="confirm" class="action.UploadAction" method="toConfirm">
+         <result name="success" type="json">
+           <param name="root">map</param>
+         </result>
+         <result name="input" type="json">
+           <param name="root">map</param>
+         </result>
+        </action>
+         <action name="upgrade" class="action.ServiceAction" method="needUpgrade">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="addtopic" class="action.Discussion" method="addDiscussion">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="addresponse" class="action.Discussion" method="doresponse">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="gettopics" class="action.Discussion" method="getTopicList">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="getresponses" class="action.Discussion" method="getResponseList">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="addaccusation" class="action.ServiceAction" method="accusation">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="getannounces" class="action.showAction" method="getAnnounce">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="getmytopics" class="action.Discussion" method="getMyTopicList">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="addconcern" class="action.ServiceAction" method="addConcern">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="delconcern" class="action.ServiceAction" method="deleteConcern">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="getconcerns" class="action.ServiceAction" method="getConcernList">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="searchnickname" class="action.ServiceAction" method="searchByNickname">
+           <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+         <action name="uploadpic" class="action.TopicPictureAction" method="execute">
+         <result name="success" type="json">
+           <param name="root">map</param>
+         </result>
+         <result name="input" type="json">
+           <param name="root">map</param>
+         </result>
+        </action>
+        <action name="dizcuz" class="action.TipAction" method="getTips">
+          <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="check" class="action.registerAction" method="randomData">
+          <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="checkValid" class="action.registerAction" method="checkRandom">
+          <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+        <action name="classify" class="action.ToolAction" method="getByClassify">
+           <result name="success" type="json">
+             <param name="root">container</param>
+           </result>
+        </action>
+        <action name="tiaojilist" class="action.ServiceAction" method="getTiaojiList">
+          <result name="success" type="json">
+           <param name="root">map</param>
+          </result>
+        </action>
+        <action name="tiaojiinfos" class="action.ServiceAction" method="getOneTiaoji">
+         <result name="success" type="json">
+          <param name="root">map</param>
+         </result>
+        </action>
+         <action name="tiaojiDiscuz" class="action.ServiceAction" method="getTiaojis">
+          <result name="success" type="json">
+            <param name="root">map</param>
+            </result>
+        </action>
+    </package>
+    
+</struts>
